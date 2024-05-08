@@ -3,8 +3,11 @@ import { useRef, useEffect } from "preact/hooks";
 const DetectPage = ({ imageUrl, rectangles }) => {
   const canvasRef = useRef(null);
 
+  
+
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return; 
     const context = canvas.getContext("2d");
 
     const image = new Image();
@@ -18,6 +21,8 @@ const DetectPage = ({ imageUrl, rectangles }) => {
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       rectangles.forEach(rect => {
+        if (!rect || Object.keys(rect).length === 0) return; 
+
         const x = rect.xmin;
         const y = rect.ymin;
         const width = rect.xmax - rect.xmin;
@@ -29,7 +34,6 @@ const DetectPage = ({ imageUrl, rectangles }) => {
         if (isTypeTwo) {
           context.fillStyle = rect.color || "blue";
 
- 
           const fontSize = Math.min(width, height) / 5; 
           context.font = `${fontSize}px Arial`;
 
@@ -58,7 +62,11 @@ const DetectPage = ({ imageUrl, rectangles }) => {
 
   return (
     <div>
-      { imageUrl ? <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }}></canvas> : <p>Image not found</p>} 
+      {imageUrl && rectangles !==null &&rectangles.length > 0   ?  (
+        <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }}></canvas>
+      ) : (
+        <h1>Image can't be loaded</h1>
+      )}
     </div>
   );
 };
