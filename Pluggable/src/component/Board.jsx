@@ -42,11 +42,7 @@ const Board = () => {
     <>
       <canvas className={canvasStyle} ref={canvasRef}></canvas>
       {canvasWidth && canvasHeight && (
-        <DrawingBoard
-          width={canvasWidth}
-          height={canvasHeight}
-          svgStyle={`sm:w-4/5 sm:h-4/5 md:w-4/5 md:h-4/5 lg:w-4/5 lg:h-4/5 xl:w-4/5 xl:h-4/5`}
-        />
+        <DrawingBoard width={canvasWidth} height={canvasHeight} />
       )}
     </>
   );
