@@ -8,7 +8,6 @@ const DetectPage = ({ imageUrl, rectangles }) => {
   let usedColors = [];
 
   useEffect(() => {
-    
     // Function to get a random bright and unique color
     const getRandomColor = (usedColors) => {
       const randomChannel = () => Math.floor(Math.random() * 256); 
@@ -29,45 +28,10 @@ const DetectPage = ({ imageUrl, rectangles }) => {
       const context = canvas.getContext("2d");
 
       const image = new Image();
-      image.src = imageUrl;
-
-      const isTypeTwo = rectangles.length > 0 && rectangles[0].hasOwnProperty('type');
-
+      image.src = ;
       canvas.width = image.width;
       canvas.height = image.height;
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-      rectangles.forEach(rect => {
-        if (!rect || Object.keys(rect).length === 0) return; 
-
-        const x = rect.xmin;
-        const y = rect.ymin;
-        
-        const width = rect.xmax - rect.xmin;
-        const height = rect.ymax - rect.ymin;
-
-        context.beginPath();
-        context.rect(x, y, width, height);
-
-        const color = getRandomColor(usedColors); // Get a random color
-        usedColors.push(color); // Store the used color
-
-        if (isTypeTwo) {
-          context.fillStyle = `rgb(${color.join(', ')})`; // Convert RGB array to string
-          const fontSize = Math.min(width, height) / 5; 
-          context.font = `${fontSize}px Arial`;
-
-          const padding = 5; 
-          const textX = x + padding;
-          const textY = y + padding + fontSize; 
-
-          context.fillText(rect.type, textX, textY);
-        }
-
-        context.strokeStyle = `rgb(${color.join(', ')})`; // Convert RGB array to string
-        context.lineWidth = 1;
-        context.stroke();
-      });
     };
 
     // Load image and update canvas size when image is loaded
