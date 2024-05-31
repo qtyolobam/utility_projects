@@ -1,0 +1,8 @@
+on cursor down start drawing the shape
+keybindings for undo (ctrl z)
+ // copy shape function not a priority
+container for adding label (radiobutton)
+label to be shown in the center of the shape
+update the undo function
+allow to drag the whole shape
+
