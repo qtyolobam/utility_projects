@@ -39,12 +39,12 @@ const Board = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex items-center justify-center">
       <canvas className={canvasStyle} ref={canvasRef}></canvas>
       {canvasWidth && canvasHeight && (
         <DrawingBoard width={canvasWidth} height={canvasHeight} />
       )}
-    </>
+    </div>
   );
 };
 
@@ -85,8 +85,4 @@ export default Board;
 //   context.fillStyle = "red";
 //   context.fill();
 //   console.log(`Clicked at ${x} ${y}`);
-<<<<<<< HEAD
 // });
-=======
-// });
->>>>>>> d29b98838db5e04c4df605e2e6c08b6e71a694ae

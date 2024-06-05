@@ -1,7 +1,12 @@
 .point {
   transition: r 0.3s ease; /* Add transition for the 'r' attribute with a duration of 0.3 seconds and ease timing function */
-<<<<<<< HEAD
 }
-=======
+
+.hover-fill {
+  fill: none; /* Initial fill color */
+  transition: fill 0.3s ease; /* Smooth transition effect */
 }
->>>>>>> d29b98838db5e04c4df605e2e6c08b6e71a694ae
+
+.hover-fill:hover {
+  fill: rgba(0, 128, 255, 0.5); /* Semi-transparent fill color on hover */
+}
